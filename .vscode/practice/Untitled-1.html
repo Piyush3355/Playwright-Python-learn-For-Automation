@@ -1,0 +1,23 @@
+<!-- Example 1: Selector by ID
+HTML
+<!-- HTML in website -->
+<input id="username" type="text">
+
+<!-- Playwright code -->
+page.fill("#username", "myusername")
+Example 2: Selector by Name
+HTML
+<!-- HTML -->
+<input name="password" type="password">
+
+<!-- Playwright code -->
+page.fill("input[name='password']", "mypassword")
+Example 3: Selector by Text (Very useful!)
+HTML
+<!-- HTML -->
+<button>Click Me</button>
+
+<!-- Playwright code -->
+page.click("text=Click Me")
+# or
+page.click("button:has-text('Click Me')") -->
