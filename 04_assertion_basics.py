@@ -4,21 +4,20 @@ def main():
     with sync_playwright() as p:
         browser = p.firefox.launch(headless=False)
         page = browser.new_page()
-
         page.goto("https://practicetestautomation.com/practice-test-login/")
-        page.wait_for_timeout(1000)
 
         page.fill("#username", "student")
         page.fill("#password", "Password123")
         page.click("#submit")
 
-        page.wait_for_timeout(2000)
+        page.wait_for_selector("text=Logged In Successfully")
 
-        page.screenshot(path="02 login.png")
+        content = page.content()
+        assert "Congratulations" in content, "Login did not succeed!"
 
-        print("test complete")
-
+        page.screenshot(path="04SS.png")
         browser.close()
+        print("Assertion complete!")
 
 if __name__ == "__main__":
-    main()        
+    main()
